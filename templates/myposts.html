@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+{% include 'includes/navbar.html'%}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='blog4.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>I can shake off everything as I write; my sorrows disappear, my courage is reborn.</h1>
+            <span class="meta">
+              <a href="#">Anne Frank</a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+ <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+{% for post in posts %}
+
+        <div class="post-preview">
+          <a href="{{url_for('singlepost', id=post.id)}}">
+            <h2 class="post-title">
+              {{post.title}}
+            </h2>
+            <h3 class="post-subtitle">
+              {{post.body}}
+            </h3>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">{{post.users.username}}</a>
+            on {{post.created.strftime(" %B %d, %Y")}} | Views: {{post.view_count}}</p>
+        </div>
+        <hr>
+        
+
+
+{% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

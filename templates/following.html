@@ -1,0 +1,19 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container">
+  {% for following in followings %}
+  <div class="card post-body">
+    <div class="card-body">
+      <a
+        href="{{url_for('userposts', id=following.followed.id)}}"
+        class="clickable"
+      >
+        <h2 class="card-title-top">{{ following.followed.username }}</h2>
+      </a>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endblock %}
